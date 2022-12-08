@@ -1,57 +1,70 @@
 <template>
     <div class="container">
-        <div>
-            <h2>National</h2>
-        </div>
-        <div class="row">
+        <div class="row py-5">
             <div class="col-md-8">
+                <div class="title px-2">National</div>
                 <div>
                     <div v-bind:class="{'hidden': openTab !== 1, 'block': openTab === 1}">
-                        <div class="py-4" v-for="news in nationalNews.slice(0,6)" :key="news.id"> 
+                        <div class="py-4"> 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <img :src="'/storage/posts/' + news.image" alt="" class="img-fluid w-100" style="height: 300px; object-fit: cover;">
-                                </div>
-                                <div class="col-md-6 py-4">
-                                    <router-link :to="{name:'viewNational', params:{headline:news.headline}}" class="h4 text-dark" style="text-decoration: none;">
-                                        {{news.headline}}
-                                    </router-link>
+                                <div class="col-md-6" v-for="news in nationalNews.slice(0,6)" :key="news.id">
+                                    <div class="con">
+                                        <img :src="'/storage/posts/' + news.image" alt="" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                                    </div>
+                                    <div class="py-3">
+                                        <router-link :to="{name:'viewNational', params:{headline:news.headline}}" class="headline h5" style="">
+                                            {{news.headline}}
+                                        </router-link>
+                                        <div>
+                                            <span style="font-weight: 700; font-size:x-small">Jimmy Mutiso</span>  <small style="font-weight:100; font-size: xx-small;"> - December 10,2022</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div v-bind:class="{'hidden': openTab !== 2, 'block': openTab === 2}">
-                        <div class="py-4" v-for="news in nationalNews.slice(6,12)" :key="news.id"> 
+                        <div class="py-4"> 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <img :src="'/storage/posts/' + news.image" alt="" class="img-fluid w-100" style="height: 300px; object-fit: cover;">
-                                </div>
-                                <div class="col-md-6 py-4">
-                                    <router-link :to="{name:'viewNational', params:{headline:news.headline}}" class="h4 text-dark" style="text-decoration: none;">
-                                        {{news.headline}}
-                                    </router-link>
+                                <div class="col-md-6" v-for="news in nationalNews.slice(6, 11)" :key="news.id">
+                                    <div class="con">
+                                        <img :src="'/storage/posts/' + news.image" alt="" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                                    </div>
+                                    <div class="py-3">
+                                        <router-link :to="{name:'viewNational', params:{headline:news.headline}}" class="headline h5" style="">
+                                            {{news.headline}}
+                                        </router-link>
+                                        <div>
+                                            <span style="font-weight: 700; font-size:x-small">Jimmy Mutiso</span>  <small style="font-weight:100; font-size: xx-small;"> - December 10,2022</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div v-bind:class="{'hidden': openTab !== 3, 'block': openTab === 3}">
-                        <div class="py-4" v-for="news in nationalNews.slice(12,18)" :key="news.id"> 
+                        <div class="py-4"> 
                             <div class="row">
-                                <div class="col-md-6">
-                                    <img :src="'/storage/posts/' + news.image" alt="" class="img-fluid w-100" style="height: 300px; object-fit: cover;">
-                                </div>
-                                <div class="col-md-6 py-4">
-                                    <router-link :to="{name:'viewNational', params:{headline:news.headline}}" class="h4 text-dark" style="text-decoration: none;">
-                                        {{news.headline}}
-                                    </router-link>
+                                <div class="col-md-6" v-for="news in nationalNews.slice(11, 17)" :key="news.id">
+                                    <div class="con">
+                                        <img :src="'/storage/posts/' + news.image" alt="" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
+                                    </div>
+                                    <div class="py-3">
+                                        <router-link :to="{name:'viewNational', params:{headline:news.headline}}" class="headline h5" style="">
+                                            {{news.headline}}
+                                        </router-link>
+                                        <div>
+                                            <span style="font-weight: 700; font-size:x-small">Jimmy Mutiso</span>  <small style="font-weight:100; font-size: xx-small;"> - December 10,2022</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>              
                 <div>
-                    <nav aria-label="...">
-                        <ul class="pagination justify-content-end">
+                    <nav aria-label="..." class="pt-5">
+                        <ul class="pagination justify-content-center">
                             <li class="page-item">
                                 <a class="page-link" @click="prevTab">Previous</a>
                             </li>
@@ -110,11 +123,38 @@ export default {
 </script>
 
 <style scoped>
-img{
-    transition: transform .5s ease;
+.con {
+  overflow: hidden;
 }
-img:hover{
-    cursor: pointer;
+
+img {
+    object-fit: cover;
+    display: block;
+    transition: transform .4s;
+}
+
+img:hover {
+    transform: scale(1.3);
+    transform-origin: 50% 50%;
+}
+
+.title{
+    font-weight: 900; 
+    font-size: 30px;
+    color: rgb(40, 116, 119);
+    border: 1px solid #e7dee9;
+    border-left: 5px solid #ff2942;
+    margin-bottom: 10px;
+}
+
+.headline{
+    font-weight:700;
+    color: black;
+    text-decoration: none;
+}
+
+.headline:hover{
+    color: #ff2942;
 }
 .hidden {
     display: none;
@@ -122,4 +162,20 @@ img:hover{
 .block {
     display: block;
 }
+.pagination > li > a
+{
+    background-color: white;
+    color: #ff2942;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: white;
+    background-color: brown;
+    cursor: pointer;
+}
+
 </style>
