@@ -108,7 +108,7 @@
                 </main>
                 <footer class="footer">
                     <div class="container-fluid">
-                        <span class="text-muted d-block text-center d-sm-inline-block">Copyright © 2022 All Rights Reserved</span>
+                        <span class="text-muted d-block text-center d-sm-inline-block">Copyright © {{new Date().getFullYear()}} All Rights Reserved</span>
                     </div>
                 </footer>
             </div>

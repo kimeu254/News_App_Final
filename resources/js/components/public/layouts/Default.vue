@@ -62,72 +62,26 @@
         data-wow-delay="0.1s"
       >
         <div class="container py-5">
-          <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-              <h1 class="text-white mb-4">
-                <img
+          <div class="text-center">
+            <img
                   class="img-fluid me-3"
                   src="../../../../../public/img/Dark Blue Red White Generic News General News Logo (2)cropped1.png"
                   alt=""
-                />
-              </h1>
-              <p>
-                Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat
-                ipsum et lorem et sit, sed stet lorem sit clita
-              </p>
-              <div class="d-flex pt-2">
-                <a class="btn btn-square me-1" href=""
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a class="btn btn-square me-1" href=""
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a class="btn btn-square me-1" href=""
-                  ><i class="fab fa-youtube"></i
-                ></a>
-                <a class="btn btn-square me-0" href=""
-                  ><i class="fab fa-linkedin-in"></i
-                ></a>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <h5 class="text-light mb-4">Address</h5>
-              <p>
-                <i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA
-              </p>
-              <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-              <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <h5 class="text-light mb-4">Quick Links</h5>
-              <a class="btn btn-link" href="">About Us</a>
-              <a class="btn btn-link" href="">Contact Us</a>
-              <a class="btn btn-link" href="">Our Services</a>
-              <a class="btn btn-link" href="">Terms & Condition</a>
-              <a class="btn btn-link" href="">Support</a>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <h5 class="text-light mb-4">Newsletter</h5>
-              <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-              <div class="position-relative mx-auto" style="max-width: 400px">
-                <input
-                  class="form-control bg-transparent w-100 py-3 ps-4 pe-5"
-                  type="text"
-                  placeholder="Your email"
-                />
-                <button
-                  type="button"
-                  class="btn btn-secondary py-2 position-absolute top-0 end-0 mt-2 me-2"
-                >
-                  SignUp
-                </button>
-              </div>
-            </div>
+            />
+            <div class="pt-3">
+                    <h6 style="font-weight: bold;">Social Links:</h6>
+                    <div class="">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-whatsapp"></a>
+                    </div>
+                </div>
           </div>
         </div>
         <div class="container-fluid copyright">
           <div class="container">
-              <div class="text-center text-md-start mb-3 mb-md-0">
+              <div class="text-center mb-3 mb-md-0">
                 Copyright &copy; {{new Date().getFullYear()}} <a>SouthEastern Brief</a>.
               </div>
           </div>
@@ -352,42 +306,6 @@ export default {
       color: #A7A8B4;
   }
   
-  .footer .btn.btn-link {
-      display: block;
-      margin-bottom: 5px;
-      padding: 0;
-      text-align: left;
-      color: #A7A8B4;
-      font-weight: normal;
-      text-transform: capitalize;
-      transition: .3s;
-  }
-  
-  .footer .btn.btn-link::before {
-      position: relative;
-      content: "\f105";
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      color: #A7A8B4;
-      margin-right: 10px;
-  }
-  
-  .footer .btn.btn-link:hover {
-      color: var(--light);
-      letter-spacing: 1px;
-      box-shadow: none;
-  }
-  
-  .footer .btn.btn-square {
-      color: #A7A8B4;
-      border: 1px solid#A7A8B4;
-  }
-  
-  .footer .btn.btn-square:hover {
-      color: var(--secondary);
-      border-color: var(--light);
-  }
-  
   .footer .copyright {
       padding: 25px 0;
       font-size: 15px;
@@ -399,19 +317,53 @@ export default {
   }
   
   .footer .copyright a:hover {
-      color: #FFFFFF;
+      color: #ff2942;
   }
+
+  .fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 70px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #E1306C;
+  color: white;
+}
+
+.fa-whatsapp {
+    background: #25D366;
+    color: white;
+}
+
   
-.scrollToTop{
-  bottom:105px; display:none; font-size:32px; font-weight:bold; height:50px; position:fixed; right:75px; text-align:center; text-decoration:none; width:50px; z-index:9; border:1px solid; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s
-}
-.scrollToTop:hover, .scrollToTop:focus{
-  text-decoration:none; outline:none
-}
-.scrollToTop{
-  background-color:#ff2942; color:#fff
-}
-.scrollToTop:hover, .scrollToTop:focus{
-  background-color:#fff; color:#ff2942; border-color:1px solid#ff2942
-}
+  .scrollToTop{
+    bottom:105px; display:none; font-size:32px; font-weight:bold; height:50px; position:fixed; right:75px; text-align:center; text-decoration:none; width:50px; z-index:9; border:1px solid; -webkit-transition:all 0.5s; -moz-transition:all 0.5s; -ms-transition:all 0.5s; -o-transition:all 0.5s; transition:all 0.5s
+  }
+  .scrollToTop:hover, .scrollToTop:focus{
+    text-decoration:none; outline:none
+  }
+  .scrollToTop{
+    background-color:#ff2942; color:#fff
+  }
+  .scrollToTop:hover, .scrollToTop:focus{
+    background-color:#fff; color:#ff2942; border-color:1px solid#ff2942
+  }
   </style>
