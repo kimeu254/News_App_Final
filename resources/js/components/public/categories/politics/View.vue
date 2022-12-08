@@ -1,28 +1,32 @@
 <template>
     <div class="container">
         <div class="py-3">
-            <h6>Category <small style="font-size: 12px;">></small> Politics</h6>
+            <h6 style="color: gray; font-size: x-small;">Category <small>/</small> Politics</h6>
         </div>
         <div class="row">
             <div class="col-md-8">
                 <div>
-                    <h1>{{news.headline}}</h1>
+                    <h1 style="font-weight: bolder;">{{news.headline}}</h1>
                 </div>
-                <div>
-                    <span>Author: </span>
-                    <span>Bumblee</span>
-                </div>
-                <div>
-                    <small>Dec 3, 2022</small>
-                </div>
-                <div class="py-3">
-                    <img :src="'/storage/posts/' + news.image" class="img-fluid w-100" style="height: 400px; object-fit: cover;">
-                </div>
-                <div>
-                    <p class="h5" style="white-space: pre-wrap;">{{news.story}}</p>
+                <div class="d-flex">
+                    <div>
+                        <span>Author: </span>
+                        <span style="font-weight: bold;">Bumblee</span>
+                    </div>
+                    <div class="px-3">
+                        <small style="font-size: x-small;">Dec 3, 2022</small>
+                    </div>
                 </div>
                 <div class="py-3">
-                    <h6>Share:</h6>
+                    <div class="con">
+                        <img :src="'/storage/posts/' + news.image" class="img-fluid w-100" style="height: 500px;">
+                    </div>
+                </div>
+                <div class="py-3">
+                    <p class="h6" style="white-space: pre-wrap;">{{news.story}}</p>
+                </div>
+                <div class="py-3">
+                    <h6 style="font-weight: bold;">Share:</h6>
                     <div class="">
                         <a href="#" class="fa fa-facebook"></a>
                         <a href="#" class="fa fa-instagram"></a>
@@ -31,12 +35,14 @@
                     </div>
                 </div>
                 <div>
-                    <h5>Related Stories</h5>
+                    <h5 style="font-weight: bold;">Related Stories</h5>
                     <div class="row">
                         <div class="col-md-4" v-for="story in politicsCategory.slice(0, 6)" :key="story.id">
                             <div style="background: white;">
-                                <img :src="'/storage/posts/' + story.image" class="img-fluid w-100" style="height: 150px; object-fit: cover;">
-                                <router-link :to="{name:'viewPolitics', params:{headline:story.headline}}" class="h4 text-dark" style="text-decoration: none;">
+                                <div class="con">
+                                    <img :src="'/storage/posts/' + story.image" class="img-fluid w-100" style="height: 150px;">
+                                </div>
+                                <router-link :to="{name:'viewPolitics', params:{headline:story.headline}}" class="h4 headline" style="">
                                     <p class="p-2 h6">{{story.headline}}</p>
                                 </router-link>
                             </div>
@@ -65,6 +71,63 @@ export default {
     methods: {}
 }
 </script>
-<style scoped>
 
+<style scoped>
+.fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 70px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-instagram {
+  background: #E1306C;
+  color: white;
+}
+
+.fa-whatsapp {
+    background: #25D366;
+    color: white;
+}
+
+.con {
+  overflow: hidden;
+}
+
+img {
+    object-fit: cover;
+    display: block;
+    transition: transform .4s;
+}
+
+img:hover {
+    transform: scale(1.3);
+    transform-origin: 50% 50%;
+}
+
+.headline{
+    font-weight:700;
+    color: black;
+    text-decoration: none;
+}
+
+.headline:hover{
+    color: #ff2942;
+}
 </style>
