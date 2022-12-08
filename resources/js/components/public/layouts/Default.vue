@@ -50,6 +50,12 @@
                   <router-link :to="{name:'lifestyleCategory'}" class="nav-link">Lifestyle</router-link>
                 </li>
               </ul>
+              <form class="d-flex align-items-center input-group-sm" style="margin-right: 20px;">
+                <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                <button class="btn btn-outline-danger">
+                  <i class="bi bi-search"></i>
+                </button>
+              </form>
             </div>
           </div>
         </nav>
@@ -151,6 +157,10 @@ export default {
     padding-top: 60px;
   }
   
+  input[type=search]:focus {
+    outline: none;
+    box-shadow: none;
+  }
   
   /*---------------------------------------
     NAVIGATION              
