@@ -7,22 +7,22 @@
                     <div class="card-body">
                         <form @submit.prevent="onSubmit">
                             <div class="mb-4">
-                                <input type="text" v-model="user.first_name" class="form-control" placeholder="First Name">
+                                <input type="text" v-model="author.first_name" class="form-control" placeholder="First Name">
                             </div>
                             <div class="mb-4">
-                                <input type="text" v-model="user.last_name" class="form-control" placeholder="Last Name">
+                                <input type="text" v-model="author.last_name" class="form-control" placeholder="Last Name">
                             </div>
                             <div class="mb-4">
-                                <input type="text" v-model="user.email" class="form-control" placeholder="Email Address">
+                                <input type="text" v-model="author.email" class="form-control" placeholder="Email Address">
                             </div>
                             <div class="mb-4">
-                                <input type="text" v-model="user.contact" class="form-control" placeholder="Mobile">
+                                <input type="text" v-model="author.contact" class="form-control" placeholder="Mobile">
                             </div>
                             <div class="mb-4">
-                                <input type="text" v-model="user.address" class="form-control" placeholder="Home Address">
+                                <input type="text" v-model="author.address" class="form-control" placeholder="Home Address">
                             </div>
                             <div class="mb-4">
-                                <textarea v-model="user.bio"  class="form-control" placeholder="Tell us about yourself..." style="height: 100px"></textarea>
+                                <textarea v-model="author.bio"  class="form-control" placeholder="Tell us about yourself..." style="height: 100px"></textarea>
                             </div>
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn ms-2">Save Changes</button>
@@ -45,20 +45,20 @@ export default {
     },
     mounted() {},
     computed: {
-        user() {
-            return this.$store.state.auth.user
+        author() {
+            return this.$store.state.news.allUsers.find(f => f.id == this.$route.params.id)
         },
     },
     methods: {
         async onSubmit() {
             try {
                 const formData = new FormData()
-                formData.append('first_name', this.user.first_name)
-                formData.append('last_name', this.user.last_name)
-                formData.append('email', this.user.email)
-                formData.append('contact', this.user.contact)
-                formData.append('address', this.user.address)
-                formData.append('bio', this.user.bio)
+                formData.append('first_name', this.author.first_name)
+                formData.append('last_name', this.author.last_name)
+                formData.append('email', this.author.email)
+                formData.append('contact', this.author.contact)
+                formData.append('address', this.author.address)
+                formData.append('bio', this.author.bio)
                 formData.append("_method", 'put')
                 const response = await axios.post("/api/user", formData)
                 .then(res => {

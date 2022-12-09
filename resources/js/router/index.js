@@ -78,6 +78,7 @@ const ViewSportsCatergory = () => import('@/components/admin/categories/sports/V
 //Profile
 const Profile = () => import('@/components/admin/profile/View.vue')
 const EditProfile = () => import('@/components/admin/profile/Edit.vue')
+const EditPicture = () => import('@/components/admin/profile/EditPic.vue')
 
 /* Authenticated Component */
 
@@ -291,10 +292,21 @@ const routes = [
 
             {
                 name: "editProfile",
-                path: '/Admin/Profile/Edit',
+                path: '/Admin/Profile/Edit/:id',
+                params: true,
                 component: EditProfile,
                 meta: {
                     title: `EditProfile`
+                }
+            },
+
+            {
+                name: "editPic",
+                path: '/Admin/Profile/Picture/Edit/:id',
+                params: true,
+                component: EditPicture,
+                meta: {
+                    title: `EditPicture`
                 }
             },
             

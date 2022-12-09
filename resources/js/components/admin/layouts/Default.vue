@@ -18,7 +18,7 @@
                                   <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="image">
                                 </div>
                                 <div v-else>
-                                  <img src="../../public/assets/img/7933336.jpg" alt="">
+                                  <img :src="'/storage/profile/' + user.profile_image" alt="" style="object-fit: cover;">
                                 </div>
                                 <span class="availability-status online"></span>
                             </div>
@@ -27,8 +27,12 @@
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                          <router-link :to="{name:'editProfile'}" class="dropdown-item" href="javascript:void(0)">
+                          <router-link :to="{name:'editProfile', params: {id:user.id}}" class="dropdown-item" href="javascript:void(0)">
                             <i class="mdi mdi-account-edit me-2 text-warning"></i> Edit Profile 
+                          </router-link>
+                          <hr class="dropdown-divider">
+                          <router-link :to="{name:'editPic', params: {id:user.id}}" class="dropdown-item" href="javascript:void(0)">
+                            <i class="mdi mdi-account-circle me-2 text-info"></i> Update Picture 
                           </router-link>
                           <hr class="dropdown-divider">
                           <a class="dropdown-item" href="javascript:void(0)" @click="logout">
@@ -52,7 +56,7 @@
                               <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="image">
                             </div>
                             <div v-else>
-                              <img src="../../public/assets/img/7933336.jpg" alt="">
+                              <img :src="'/storage/profile/' + user.profile_image" alt="" style="object-fit: cover;">
                             </div>
                             <span class="login-status online"></span>
                           </div>

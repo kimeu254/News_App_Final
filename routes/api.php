@@ -34,6 +34,7 @@ Route::get('/allUsers', [NewsController::class, 'getUsers']);
 Route::group(['middleware' => ['auth:sanctum']], function() {
     
     Route::put('/user', [HomeController::class, 'updateProfile']);
+    Route::put('/profilePic', [HomeController::class, 'updatePic']);
 
     Route::get('/southEasternNews', [SouthEasternNewsController::class, 'index']);
     Route::post('/southEasternNews', [SouthEasternNewsController::class, 'store']);
