@@ -1,28 +1,29 @@
 <template>
     <div class="container">
         <div class="py-3">
-            <h6 style="color: gray; font-size: x-small;">News <small>/</small> National</h6>
+            <h6 style="color: gray; font-size: x-small;">Home <small>/</small> Stories</h6>
         </div>
         <div class="row">
             <div class="col-md-8">
                 <div>
-                    <h1 style="font-weight: bolder;">{{news.headline}}</h1>
+                    <h1 style="font-weight: bolder;">{{story.headline}}</h1>
                 </div>
                 <div class="d-flex">
-                    <div v-for="author in allUsers">
-                        <router-link class="headline" :to="{name:'author', params:{first_name:author.first_name}}" style="font-weight: 700; font-size:x-small" v-if="(news.posted_by == author.id)">Author: {{author.first_name}} {{author.last_name}}</router-link> 
+                    <div>
+                        <span>Author: </span>
+                        <span style="font-weight: bold;">Bumblee</span>
                     </div>
-                    <div class="px-2">
-                        <small style="font-weight:100; font-size: xx-small;">{{ news.created_at.slice(0, 10) }}</small>
+                    <div class="px-3">
+                        <small style="font-size: x-small;">Dec 3, 2022</small>
                     </div>
                 </div>
                 <div class="py-3">
                     <div class="con">
-                        <img :src="'/storage/posts/' + news.image" class="img-fluid w-100" style="height: 500px;">
+                        <img :src="'/storage/posts/' + story.image" class="img-fluid w-100" style="height: 500px;">
                     </div>
                 </div>
                 <div class="py-3">
-                    <p class="h6" style="white-space: pre-wrap;">{{news.story}}</p>
+                    <p class="h6" style="white-space: pre-wrap;">{{story.story}}</p>
                 </div>
                 <div class="py-3">
                     <h6 style="font-weight: bold;">Share:</h6>
@@ -36,20 +37,22 @@
                 <div>
                     <h5 style="font-weight: bold;">Related Stories</h5>
                     <div class="row">
-                        <div class="col-md-4" v-for="story in nationalNews.slice(0, 6)" :key="story.id">
+                        <div class="col-md-4" v-for="post in news.slice(0, 6)" :key="post.id">
                             <div style="background: white;">
                                 <div class="con">
-                                    <img :src="'/storage/posts/' + story.image" class="img-fluid w-100" style="height: 150px;">
+                                    <img :src="'/storage/posts/' + post.image" class="img-fluid w-100" style="height: 150px;">
                                 </div>
-                                <router-link :to="{name:'viewNational', params:{headline:story.headline}}" class="h4 headline">
-                                    <p class="p-2 h6">{{story.headline}}</p>
+                                <router-link :to="{name:'viewNews', params:{headline:post.headline}}" class="h4 headline">
+                                    <p class="p-2 h6">{{post.headline}}</p>
                                 </router-link>
                             </div>
                         </div>   
                     </div>
                 </div>
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                
+            </div>
         </div>
     </div>
 </template>
@@ -62,15 +65,14 @@ export default {
         return{}
     },
     computed: {
-        news() {
-            return this.$store.state.nationalNews.nationalNews.find(f => f.headline == this.$route.params.headline)
+        story() {
+            return this.$store.state.news.news.find(f => f.headline == this.$route.params.headline)
         },
-        ...mapGetters(["nationalNews", "allUsers"])
+        ...mapGetters(["news"])
     },
     methods: {}
 }
 </script>
-
 <style scoped>
 .fa {
   padding: 10px;

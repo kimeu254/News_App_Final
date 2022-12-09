@@ -10,9 +10,6 @@ import 'datatables.net-buttons/js/buttons.html5.min.js'
 import DataTables from 'datatables.net-dt'
 import 'datatables.net-buttons-dt/css/buttons.dataTables.min.css'
 import 'datatables.net-buttons-dt/js/buttons.dataTables.js'
-import 'owl.carousel/dist/assets/owl.carousel.css'
-import 'animate.css/animate.min.css'
-import 'wowjs/dist/wow.min.js'
 import jQuery from 'jquery'
 import VueSweetalert2 from 'vue-sweetalert2';
 import Swal from 'sweetalert2';

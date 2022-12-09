@@ -17,6 +17,9 @@ const LifestyleCategory = () => import('@/components/public/categories/lifestyle
 const ViewLifestyle = () => import('@/components/public/categories/lifestyle/View.vue')
 const SportsCategory = () => import('@/components/public/categories/sports/Sports.vue')
 const ViewSports = () => import('@/components/public/categories/sports/View.vue')
+const Author = () => import('@/components/public/author/View.vue')
+const News = () => import('@/components/public/news/List.vue')
+const ViewNews = () => import('@/components/public/news/View.vue')
 
 const Login = () => import('@/components/admin/auth/Login.vue')
 const Register = () => import('@/components/admin/auth/Register.vue')
@@ -212,6 +215,32 @@ const routes = [
                 params: true,
                 meta: {
                     title: `ViewLifestyle`
+                }
+            },
+            {
+                name: "author",
+                path: '/Author/:first_name',
+                component: Author,
+                params: true,
+                meta: {
+                    title: `Author`
+                }
+            },
+            {
+                name: "news",
+                path: '/News',
+                component: News,
+                meta: {
+                    title: `News`
+                }
+            },
+            {
+                name: "viewNews",
+                path: '/News/:headline',
+                component: ViewNews,
+                params: true,
+                meta: {
+                    title: `ViewNews`
                 }
             },
         ]

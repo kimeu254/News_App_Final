@@ -21,7 +21,7 @@
                     <div class="top-left-head" style="">SouthEastern</div>
                     <router-link :to="{name:'viewsouthEastern', params:{headline:news.headline}}" class="top-cat-head h5" style="">{{news.headline}}</router-link>
                     <div class="date" style="">
-                        <small style="font-weight: lighter;">6 Dec,2022</small>
+                        <small style="font-weight: lighter;">{{news.created_at.slice(0,10)}}</small>
                     </div>
                 </div>
                 <div class="col-md-4 padding-1 rel">
@@ -54,7 +54,7 @@
                     <div class="top-left-head" style="">International</div>
                     <router-link :to="{name:'viewinternational', params:{headline:news.headline}}" class="top-cat-head h5" style="">{{news.headline}}</router-link>
                     <div class="date" style="">
-                        <small style="font-weight: lighter;">6 Dec,2022</small>
+                        <small style="font-weight: lighter;">{{news.created_at.slice(0,10)}}</small>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                                     <img :src="'/storage/posts/' + item.image" class="img-fluid rounded d-block w-100" alt="..." style="height: 400px;">
                                     <div class="carousel-caption d-none d-md-block" style="color: white; text-align:start;">
                                         <p class="h2" style="font-weight:900;">{{item.headline}}</p>
-                                        <small>6 Dec,2022</small>
+                                        <small>{{item.created_at.slice(0,10)}}</small>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@
                                 <div class="top-left">Politics</div>
                                 <router-link :to="{name:'viewPolitics', params:{headline:news.headline}}" class="top-cat-headline h5" style="">{{news.headline}}</router-link>
                                 <div class="date" style="">
-                                    <small style="font-weight: lighter;">6 Dec,2022</small>
+                                    <small style="font-weight: lighter;">{{news.created_at.slice(0,10)}}</small>
                                 </div>
                             </div>
                             <div class="col-md-6 padding-0 rel" v-for="news in businessCategory.slice(0, 1)" :key="news.id" style="" >
@@ -113,7 +113,7 @@
                                 <div class="top-left">Business</div>
                                 <router-link :to="{name:'viewBusiness', params:{headline:news.headline}}" class="top-cat-headline h5" style="">{{news.headline}}</router-link>
                                 <div class="date" style="">
-                                    <small style="font-weight: lighter;">6 Dec,2022</small>
+                                    <small style="font-weight: lighter;">{{news.created_at.slice(0,10)}}</small>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +125,7 @@
                                 <div class="top-left">Sports</div>
                                 <router-link :to="{name:'viewSports', params:{headline:news.headline}}" class="top-cat-headline h5" style="">{{news.headline}}</router-link>
                                 <div class="date" style="">
-                                    <small style="font-weight: lighter;">6 Dec,2022</small>
+                                    <small style="font-weight: lighter;">{{news.created_at.slice(0,10)}}</small>
                                 </div>
                             </div>
                             <div class="col-md-6 padding-0 rel" v-for="news in lifestyleCategory.slice(0, 1)" :key="news.id" style="" >
@@ -135,7 +135,7 @@
                                 <div class="top-left">Lifestyle</div>
                                 <router-link :to="{name:'viewLifestyle', params:{headline:news.headline}}" class="top-cat-headline h5" style="">{{news.headline}}</router-link>
                                 <div class="date" style="">
-                                    <small style="font-weight: lighter;">6 Dec,2022</small>
+                                    <small style="font-weight: lighter;">{{news.created_at.slice(0,10)}}</small>
                                 </div>
                             </div>
                         </div>

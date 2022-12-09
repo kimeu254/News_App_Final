@@ -9,14 +9,13 @@
                     <h1 style="font-weight: bolder;">{{news.headline}}</h1>
                 </div>
                 <div class="d-flex">
-                    <div>
-                        <span>Author: </span>
-                        <span style="font-weight: bold;">Bumblee</span>
+                    <div v-for="author in allUsers">
+                        <router-link class="headline" :to="{name:'author', params:{first_name:author.first_name}}" style="font-weight: 700; font-size:x-small" v-if="(news.posted_by == author.id)">Author: {{author.first_name}} {{author.last_name}}</router-link> 
                     </div>
-                    <div class="px-3">
-                        <small style="font-size: x-small;">Dec 3, 2022</small>
+                    <div class="px-2">
+                        <small style="font-weight:100; font-size: xx-small;">{{ news.created_at.slice(0, 10) }}</small>
                     </div>
-                </div>
+                </div>                                         
                 <div class="py-3">
                     <div class="con">
                         <img :src="'/storage/posts/' + news.image" class="img-fluid w-100" style="height: 500px;">
@@ -68,7 +67,7 @@ export default {
         news() {
             return this.$store.state.southEasternNews.southEasternNews.find(f => f.headline == this.$route.params.headline)
         },
-        ...mapGetters(["southEasternNews"])
+        ...mapGetters(["southEasternNews", "allUsers"])
     },
     methods: {}
 }
