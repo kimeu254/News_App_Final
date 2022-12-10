@@ -27,10 +27,18 @@
                 <div class="py-3">
                     <h6 style="font-weight: bold;">Share:</h6>
                     <div class="">
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-instagram"></a>
-                        <a href="#" class="fa fa-twitter"></a>
-                        <a href="#" class="fa fa-whatsapp"></a>
+                        <ShareNetwork network="facebook" url="" :title="story.headline" :description="story.story.slice(0,20)">
+                            <a class="fa fa-facebook"></a>
+                        </ShareNetwork>
+                        <ShareNetwork network="telegram" url="" :title="story.headline" :description="story.story.slice(0,20)">
+                            <a class="fa fa-instagram"></a>
+                        </ShareNetwork>
+                        <ShareNetwork network="twitter" url="" :title="story.headline" :description="story.story.slice(0,20)">
+                            <a class="fa fa-twitter"></a>
+                        </ShareNetwork>
+                        <ShareNetwork network="whatsapp" url="" :title="story.headline" :description="story.story.slice(0,20)">
+                            <a class="fa fa-whatsapp"></a>
+                        </ShareNetwork>
                     </div>
                 </div>
                 <div>
