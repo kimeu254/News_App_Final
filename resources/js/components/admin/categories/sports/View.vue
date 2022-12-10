@@ -5,6 +5,14 @@
             <img :src="'/storage/posts/' + news.image" class="img-fluid w-50" style="height: 300px; object-fit: cover;">
         </div>
         <p style="white-space:pre-wrap;">{{news.story}}</p>
+        <div v-if="(news.image_one != null)">
+            <img :src="'/storage/posts/' + news.image_one" class="img-fluid w-50" style="height: 300px; object-fit: cover;">
+        </div>
+        <p style="white-space:pre-wrap;">{{news.story_one}}</p>
+        <div v-if="(news.image_two != null)">
+            <img :src="'/storage/posts/' + news.image_two" class="img-fluid w-50" style="height: 300px; object-fit: cover;">
+        </div>
+        <p style="white-space:pre-wrap;">{{news.story_two}}</p>
     </div>
 </template>
 

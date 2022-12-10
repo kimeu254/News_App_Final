@@ -23,6 +23,12 @@
                             <div class="mb-4">
                                 <textarea v-model="news.story" class="form-control" placeholder="Type your story here..." style="height: 100px"></textarea>
                             </div>
+                            <div class="mb-4" v-if="(news.story_one != null)">
+                                <textarea v-model="news.story_one" class="form-control" placeholder="Type your story here..." style="height: 100px"></textarea>
+                            </div>
+                            <div class="mb-4" v-if="(news.story_two != null)">
+                                <textarea v-model="news.story_two" class="form-control" placeholder="Type your story here..." style="height: 100px"></textarea>
+                            </div>
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn ms-2">Post News</button>
                             </div>
@@ -64,6 +70,12 @@ export default {
                 formData.append('file', this.file)
                 formData.append('headline', this.news.headline)
                 formData.append('story', this.news.story)
+                if (this.news.story_one != null) {
+                    formData.append('story_one', this.news.story_one)
+                }
+                if (this.news.story_two != null) {
+                    formData.append('story_two', this.news.story_two)
+                }
                 formData.append("_method", 'put')
                 const response = await axios.post("/api/politicsCategory/"+id, formData)
                 .then(res => {
