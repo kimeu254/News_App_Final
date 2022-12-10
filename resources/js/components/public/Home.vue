@@ -65,7 +65,7 @@
                     <div class="pb-3">
                         <div class="title px-2">Latest News</div>
                     </div>
-                    <div class="col-lg-6 carousel-col">
+                    <div class="col-lg-6 carousel-col pb-3">
                         <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
                                 <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -79,8 +79,9 @@
                                 <div v-for="item in news.slice(0, 6)" :key="item.id" class="carousel-item active" data-bs-interval="2000">
                                     <img :src="'/storage/posts/' + item.image" class="img-fluid rounded d-block w-100" alt="..." style="height: 400px;">
                                     <div class="carousel-caption d-none d-md-block" style="color: white; text-align:start;">
-                                        <p class="h2" style="font-weight:900;">{{item.headline}}</p>
-                                        <small>{{item.created_at.slice(0,10)}}</small>
+                                        <router-link :to="{name:'viewNews', params:{headline:item.headline}}" class="headline h2 text-light" style="text-decoration: none;">
+                                            {{item.headline}}
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -94,7 +95,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-lg-6">
                         <div class="row">
                             <div class="col-md-6 padding-0 rel" v-for="news in politicsCategory.slice(0, 1)" :key="news.id" style="" >
                                 <div class="con">
@@ -488,4 +489,5 @@ img:hover {
 
 .news ul:hover { animation-play-state: paused }
 .news span:hover+ul { animation-play-state: paused }
+
 </style>

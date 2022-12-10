@@ -124,7 +124,6 @@
 import { mapGetters } from 'vuex';
 
 export default {
-    //name: 'view',
     data () {
         return {
             user: this.$store.state.auth.user,

@@ -38,7 +38,6 @@
 import { mapGetters } from 'vuex';
 
 export default {
-    file: 'edit',
     data() {
         return{
             success: '',

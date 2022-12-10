@@ -12,7 +12,6 @@
 import { mapGetters } from 'vuex';
 
 export default {
-    name: 'view',
     data() {
         return{
             success: '',

@@ -55,6 +55,68 @@ class SouthEasternNewsController extends Controller
             }
     }
 
+    public function addDoubleStory(Request $request) 
+    {
+        $south = SouthEasternNews::all()->last();
+        $news = News::all()->last();
+
+        $attrs = $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
+        if($request->file()) {
+            $file_name = time().'_'.$request->file->getClientOriginalName();
+            $file_path = $request->file('file')->storeAs('posts', $file_name, 'public');
+    
+            $south->image_one = time().'_'.$request->file->getClientOriginalName();
+            $south->path_one = '/storage/' . $file_path;
+            $south->story_one = $request->story_one;
+            $south->save();
+
+            $news->image_one = time().'_'.$request->file->getClientOriginalName();
+            $news->path_one = '/storage/' . $file_path;
+            $news->story_one = $request->story_one;
+            $news->save();
+    
+                return response()->json([
+                    'success'=>'Post upload was success.',
+                    'news' => $news,
+                    'southEasterNews' => $south,
+                ]);
+        }
+    }
+
+    public function addTripleStory(Request $request) 
+    {
+        $south = SouthEasternNews::all()->last();
+        $news = News::all()->last();
+
+        $attrs = $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
+        if($request->file()) {
+            $file_name = time().'_'.$request->file->getClientOriginalName();
+            $file_path = $request->file('file')->storeAs('posts', $file_name, 'public');
+    
+            $south->image_two = time().'_'.$request->file->getClientOriginalName();
+            $south->path_two = '/storage/' . $file_path;
+            $south->story_two = $request->story_two;
+            $south->save();
+
+            $news->image_two = time().'_'.$request->file->getClientOriginalName();
+            $news->path_two = '/storage/' . $file_path;
+            $news->story_two = $request->story_two;
+            $news->save();
+    
+                return response()->json([
+                    'success'=>'Post upload was success.',
+                    'news' => $news,
+                    'southEasterNews' => $south,
+                ]);
+        }
+    }
+
     public function update(Request $request, $id)
     {
         $south = SouthEasternNews::find($id);
@@ -73,9 +135,11 @@ class SouthEasternNewsController extends Controller
         $south = SouthEasternNews::find($id);
         $news_south_id = DB::table('news')->select('south_eastern_id')->get();
         $path = storage_path().'/app/public/posts/'.$south->image;
+        $path_one = storage_path().'/app/public/posts/'.$south->image_one;
+        $path_two = storage_path().'/app/public/posts/'.$south->image_two;
 
-        if(file_exists($path)){
-            File::delete( $path);
+        if(file_exists($path||$path_one||$path_two)){
+            File::delete( $path, $path_one, $path_two);
         }
 
         if ($news_south_id === $south)

@@ -55,6 +55,69 @@ class SportsController extends Controller
             }
     }
 
+    public function addDoubleStory(Request $request) 
+    {
+        $Sports = Sports::all()->last();
+        $news = News::all()->last();
+
+        $attrs = $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
+        if($request->file()) {
+            $file_name = time().'_'.$request->file->getClientOriginalName();
+            $file_path = $request->file('file')->storeAs('posts', $file_name, 'public');
+    
+            $Sports->image_one = time().'_'.$request->file->getClientOriginalName();
+            $Sports->path_one = '/storage/' . $file_path;
+            $Sports->story_one = $request->story_one;
+            $Sports->save();
+
+            $news->image_one = time().'_'.$request->file->getClientOriginalName();
+            $news->path_one = '/storage/' . $file_path;
+            $news->story_one = $request->story_one;
+            $news->save();
+    
+                return response()->json([
+                    'success'=>'Post upload was success.',
+                    'news' => $news,
+                    'sports' => $Sports,
+                ]);
+        }
+    }
+
+    public function addTripleStory(Request $request) 
+    {
+        $Sports = Sports::all()->last();
+        $news = News::all()->last();
+
+        $attrs = $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
+        if($request->file()) {
+            $file_name = time().'_'.$request->file->getClientOriginalName();
+            $file_path = $request->file('file')->storeAs('posts', $file_name, 'public');
+    
+            $Sports->image_two = time().'_'.$request->file->getClientOriginalName();
+            $Sports->path_two = '/storage/' . $file_path;
+            $Sports->story_two = $request->story_two;
+            $Sports->save();
+
+            $news->image_two = time().'_'.$request->file->getClientOriginalName();
+            $news->path_two = '/storage/' . $file_path;
+            $news->story_two = $request->story_two;
+            $news->save();
+    
+                return response()->json([
+                    'success'=>'Post upload was success.',
+                    'news' => $news,
+                    'sports' => $Sports,
+                ]);
+        }
+    }
+
+
     public function update(Request $request, $id)
     {
         $Sports = Sports::find($id);
@@ -72,9 +135,11 @@ class SportsController extends Controller
         $Sports = Sports::find($id);
         $news_Sports_id = DB::table('news')->select('sports_id')->get();
         $path = storage_path().'/app/public/posts/'.$Sports->image;
+        $path_one = storage_path().'/app/public/posts/'.$Sports->image_one;
+        $path_two = storage_path().'/app/public/posts/'.$Sports->image_two;
 
-        if(file_exists($path)){
-            File::delete( $path);
+        if(file_exists($path||$path_one||$path_two)){
+            File::delete( $path, $path_one, $path_two);
         }
 
         if ($news_Sports_id === $Sports)
