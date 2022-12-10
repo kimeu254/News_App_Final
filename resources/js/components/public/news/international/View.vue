@@ -18,11 +18,27 @@
                 </div>
                 <div class="py-3">
                     <div class="con">
-                        <img :src="'/storage/posts/' + news.image" class="img-fluid w-100" style="height: 500px;">
+                        <img :src="'/storage/posts/' + news.image" class="img-fluid w-100" style="height: 370px;">
                     </div>
                 </div>
                 <div class="py-3">
                     <p class="h6" style="white-space: pre-wrap;">{{news.story}}</p>
+                </div>
+                <div class="py-3" v-if="(news.image_one != null)">
+                    <div class="con">
+                        <img :src="'/storage/posts/' + news.image_one" class="img-fluid w-100" style="height: 350px;">
+                    </div>
+                </div>
+                <div class="py-3" v-if="(news.story_one != null)">
+                    <p class="h6" style="white-space: pre-wrap;">{{news.story_one}}</p>
+                </div>
+                <div class="py-3" v-if="(news.image_two != null)">
+                    <div class="con">
+                        <img :src="'/storage/posts/' + news.image_two" class="img-fluid w-100" style="height: 350px;">
+                    </div>
+                </div>
+                <div class="py-3" v-if="(news.story_one != null)">
+                    <p class="h6" style="white-space: pre-wrap;">{{news.story_two}}</p>
                 </div>
                 <div class="py-3">
                     <h6 style="font-weight: bold;">Share:</h6>
