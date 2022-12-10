@@ -30,7 +30,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/news', [NewsController::class, 'index']);
 Route::get('/allUsers', [NewsController::class, 'getUsers']);
 
-
 Route::group(['middleware' => ['auth:sanctum']], function() {
     
     Route::put('/user', [HomeController::class, 'updateProfile']);

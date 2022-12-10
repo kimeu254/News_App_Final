@@ -15,5 +15,11 @@ class Lifestyle extends Model
         'path',
         'story',
         'posted_by',
+        'image_one',
+        'path_one',
+        'story_one',
+        'image_two',
+        'path_two',
+        'story_two',
     ];
 }

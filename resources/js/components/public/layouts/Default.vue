@@ -17,7 +17,11 @@
         <nav class="navbar navbar-expand-lg navbar-dark shadow" id="navbar">
           <div class="container-fluid">
             <img class="navbar-brand d-lg-none img-fluid" src="../../../../../public/img/Dark Blue Red White Generic News General News Logo (4)cropped1.png" width="200">
-            
+            <div class="d-lg-none input-group-sm ms-auto px-3">
+                <button type="submit" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="bi bi-search"></i>
+                </button>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -50,16 +54,52 @@
                   <router-link :to="{name:'lifestyleCategory'}" class="nav-link">Lifestyle</router-link>
                 </li>
               </ul>
-              <form class="d-flex align-items-center input-group-sm" style="margin-right: 20px;">
-                <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
-                <button class="btn btn-outline-danger">
+              <div class="d-none d-lg-block input-group-sm" style="margin-right: 20px;">
+                <button type="submit" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   <i class="bi bi-search"></i>
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </nav>
         <main class="content">
+          <!-- Modal -->
+            <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <div>
+                      <form action="">
+                        <input v-model="search" type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                      </form>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row g-0" style="padding-bottom: 20px;" v-for="r of resultQuery" :key="r.id">
+                      <div class="col-sm-4">
+                        <div class="con">
+                          <img :src="'/storage/posts/' + r.image" alt="" class="img-fluid w-100" style="height: 100px;">
+                        </div>
+                      </div>
+                      <div class="col-sm-8" style="">
+                        <div class="p-3">
+                          <router-link :to="{name:'viewNews', params:{headline:r.headline}}" class="headline" style="text-decoration: none;">
+                            {{r.headline}}
+                          </router-link>    
+                        </div>
+                      </div>
+                    </div>
+                    <div class="item error" v-if="search&&!resultQuery.length">
+                      <p>No results found!</p>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
             <router-view></router-view>
         </main>
         <footer>
@@ -99,8 +139,14 @@
   
 <script>
 import $ from "jquery"
+import { mapGetters } from "vuex";
 
 export default {
+    data() {
+      return{
+        search: null
+      }
+    },
     mounted() {
       console.log('Component mounted.')
 
@@ -132,12 +178,30 @@ export default {
       }
       
     },
+    computed: {
+      ...mapGetters(["news"]),
+      resultQuery() {
+          if (this.search) {
+            return this.news.filter(item => {
+              return this.search
+                .toLowerCase()
+                .split(" ")
+                .every(v => item.headline.toLowerCase().includes(v) || item.story.toLowerCase().includes(v) );
+            });
+          } 
+        }
+    },
     methods: {
         currentDate() {
-        const current = new Date();
-        const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-        return date;
-      }
+          const current = new Date();
+          const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+          return date;
+        },
+        // onSubmit() {
+        //   let existingObj = this;
+        //   let data = new FormData();
+        //   data.append('search', this.search);
+        // },
     }
 }
 </script>
@@ -145,6 +209,31 @@ export default {
   <style>
   .content {
     padding: 16px;
+  }
+
+  .con {
+    overflow: hidden;
+  }
+
+  .con img {
+    object-fit: cover;
+    display: block;
+    transition: transform .4s;
+  }
+
+  .con img:hover {
+      transform: scale(1.3);
+      transform-origin: 50% 50%;
+  }
+
+  .headline{
+    font-weight:700;
+    color: black;
+    text-decoration: none;
+  }
+
+  .headline:hover{
+      color: #ff2942;
   }
   
   .sticky {

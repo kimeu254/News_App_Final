@@ -17,4 +17,5 @@ class NewsController extends Controller
     {
         return User::all();
     }
+
 }

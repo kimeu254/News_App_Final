@@ -33,13 +33,10 @@ export default {
         return{
             success: '',
             url: '',
+            user: this.$store.state.auth.user,
         }
     },
-    computed: {
-        user() {
-            return this.$store.state.news.allUsers.find(f => f.id == this.$route.params.id)
-        },
-    },
+    computed: {},
     methods: {
         onChange(e) {
             this.file = e.target.files[0];
