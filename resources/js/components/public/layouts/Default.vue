@@ -28,7 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarScroll">
               <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
                 <li class="nav-item">
-                  <router-link :to="{name:'home'}" class="nav-link" aria-current="page">Home</router-link>
+                  <router-link :to="{name:'home'}" class="nav-link" aria-current="page" :class="{active: $route.name==='home'}">Home</router-link>
                 </li>
                 
                 <li class="nav-item dropdown">
@@ -42,16 +42,16 @@
                   </ul>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{name:'politicsCategory'}" class="nav-link">Politics</router-link>
+                  <router-link :to="{name:'politicsCategory'}" class="nav-link" :class="{active: $route.name==='politicsCategory'}">Politics</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{name:'businessCategory'}" class="nav-link">Business</router-link>
+                  <router-link :to="{name:'businessCategory'}" class="nav-link" :class="{active: $route.name==='businessCategory'}">Business</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{name:'sportsCategory'}" class="nav-link">Sports</router-link>
+                  <router-link :to="{name:'sportsCategory'}" class="nav-link" :class="{active: $route.name==='sportsCategory'}">Sports</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link :to="{name:'lifestyleCategory'}" class="nav-link">Lifestyle</router-link>
+                  <router-link :to="{name:'lifestyleCategory'}" class="nav-link" :class="{active: $route.name==='lifestyleCategory'}">Lifestyle</router-link>
                 </li>
               </ul>
               <div class="d-none d-lg-block input-group-sm" style="margin-right: 20px;">
@@ -196,12 +196,7 @@ export default {
           const current = new Date();
           const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
           return date;
-        },
-        // onSubmit() {
-        //   let existingObj = this;
-        //   let data = new FormData();
-        //   data.append('search', this.search);
-        // },
+      },
     }
 }
 </script>
@@ -463,6 +458,6 @@ export default {
     background-color:#ff2942; color:#fff
   }
   .scrollToTop:hover, .scrollToTop:focus{
-    background-color:#fff; color:#ff2942; border-color:1px solid#ff2942
+    background-color:#fff; color:#ff2942; border-color:1px solid#ff2942; cursor: pointer;
   }
   </style>

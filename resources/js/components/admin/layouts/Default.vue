@@ -68,7 +68,7 @@
                       </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{name:'dashboard'}" class="nav-link" >
+                        <router-link :to="{name:'dashboard'}" class="nav-link" :class="{active: $route.name==='dashboard'}">
                             <span class="menu-title">Dashboard</span>
                             <i class="mdi mdi-home menu-icon"></i>
                         </router-link>
