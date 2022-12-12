@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('image_one')->nullable();
             $table->string('path_one')->nullable();
             $table->longText('story_one')->nullable();
-            $table->string('image_two')->nullable();
-            $table->string('path_two')->nullable();
+            $table->string('url')->nullable();
             $table->longText('story_two')->nullable();
         });
     }

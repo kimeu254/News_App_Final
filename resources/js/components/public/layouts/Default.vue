@@ -77,12 +77,12 @@
                   </div>
                   <div class="modal-body">
                     <div class="row g-0" style="padding-bottom: 20px;" v-for="r of resultQuery" :key="r.id">
-                      <div class="col-xs-4">
+                      <div class="col-sm-4">
                         <div class="con">
                           <img :src="'/storage/posts/' + r.image" alt="" class="img-fluid w-100" style="height: 100px;">
                         </div>
                       </div>
-                      <div class="col-xs-8" style="">
+                      <div class="col-sm-8" style="">
                         <div class="p-3">
                           <router-link :to="{name:'viewNews', params:{headline:r.headline}}" class="headline" style="text-decoration: none;">
                             {{r.headline}}

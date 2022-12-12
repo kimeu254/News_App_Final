@@ -32,12 +32,12 @@
                 <div class="py-3" v-if="(news.story_one != null)">
                     <p class="h6" style="white-space: pre-wrap;">{{news.story_one}}</p>
                 </div>
-                <div class="py-3" v-if="(news.image_two != null)">
-                    <div class="con">
-                        <img :src="'/storage/posts/' + news.image_two" class="img-fluid w-100" style="height: 350px;">
+                <div class="py-3" v-if="(news.url != null)">
+                    <div class="embed-responsive ratio ratio-16x9">
+                        <iframe :src="'https://www.youtube.com/embed/'+news.url" frameborder="0"></iframe>
                     </div>
                 </div>
-                <div class="py-3" v-if="(news.story_one != null)">
+                <div class="py-3" v-if="(news.story_two != null)">
                     <p class="h6" style="white-space: pre-wrap;">{{news.story_two}}</p>
                 </div>
                 <div class="py-3">

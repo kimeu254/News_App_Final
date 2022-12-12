@@ -92,29 +92,24 @@ class InternationalNewsController extends Controller
         $news = News::all()->last();
 
         $attrs = $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png'
+            'url' => 'required',
+            'story_two' => 'required'
         ]);
 
-        if($request->file()) {
-            $file_name = time().'_'.$request->file->getClientOriginalName();
-            $file_path = $request->file('file')->storeAs('posts', $file_name, 'public');
-    
-            $InternationalNews->image_two = time().'_'.$request->file->getClientOriginalName();
-            $InternationalNews->path_two = '/storage/' . $file_path;
-            $InternationalNews->story_two = $request->story_two;
-            $InternationalNews->save();
+        $InternationalNews->url = $request->url;
+        $InternationalNews->story_two = $request->story_two;
+        $InternationalNews->save();
 
-            $news->image_two = time().'_'.$request->file->getClientOriginalName();
-            $news->path_two = '/storage/' . $file_path;
-            $news->story_two = $request->story_two;
-            $news->save();
-    
-                return response()->json([
-                    'success'=>'Post upload was success.',
-                    'news' => $news,
-                    'international_news' => $InternationalNews,
-                ]);
-        }
+        $news->url = $request->url;
+        $news->story_two = $request->story_two;
+        $news->save();
+
+        return response()->json([
+            'success'=>'Post upload was success.',
+            'news' => $news,
+            'InternationalNews' => $InternationalNews,
+        ]);
+
     }
 
     public function update(Request $request, $id)
@@ -135,10 +130,13 @@ class InternationalNewsController extends Controller
         $news_International_id = DB::table('news')->select('international_news_id')->get();
         $path = storage_path().'/app/public/posts/'.$InternationalNews->image;
         $path_one = storage_path().'/app/public/posts/'.$InternationalNews->image_one;
-        $path_two = storage_path().'/app/public/posts/'.$InternationalNews->image_two;
 
-        if(file_exists($path||$path_one||$path_two)){
-            File::delete( $path, $path_one, $path_two);
+        if(file_exists($path)){
+            File::delete($path);
+        }
+
+        if(file_exists($path_one)){
+            File::delete($path_one);
         }
 
         if ($news_International_id === $InternationalNews)

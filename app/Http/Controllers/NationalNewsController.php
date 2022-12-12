@@ -92,29 +92,23 @@ class NationalNewsController extends Controller
         $news = News::all()->last();
 
         $attrs = $request->validate([
-            'file' => 'required|mimes:jpg,jpeg,png'
+            'url' => 'required',
+            'story_two' => 'required'
         ]);
 
-        if($request->file()) {
-            $file_name = time().'_'.$request->file->getClientOriginalName();
-            $file_path = $request->file('file')->storeAs('posts', $file_name, 'public');
-    
-            $NationalNews->image_two = time().'_'.$request->file->getClientOriginalName();
-            $NationalNews->path_two = '/storage/' . $file_path;
-            $NationalNews->story_two = $request->story_two;
-            $NationalNews->save();
+        $NationalNews->url = $request->url;
+        $NationalNews->story_two = $request->story_two;
+        $NationalNews->save();
 
-            $news->image_two = time().'_'.$request->file->getClientOriginalName();
-            $news->path_two = '/storage/' . $file_path;
-            $news->story_two = $request->story_two;
-            $news->save();
-    
-                return response()->json([
-                    'success'=>'Post upload was success.',
-                    'news' => $news,
-                    'national_news' => $NationalNews,
-                ]);
-        }
+        $news->url = $request->url;
+        $news->story_two = $request->story_two;
+        $news->save();
+
+        return response()->json([
+            'success'=>'Post upload was success.',
+            'news' => $news,
+            'NationalNews' => $NationalNews,
+        ]);
     }
 
     public function update(Request $request, $id)
@@ -136,10 +130,13 @@ class NationalNewsController extends Controller
         $news_National_id = DB::table('news')->select('national_news_id')->get();
         $path = storage_path().'/app/public/posts/'.$NationalNews->image;
         $path_one = storage_path().'/app/public/posts/'.$NationalNews->image_one;
-        $path_two = storage_path().'/app/public/posts/'.$NationalNews->image_two;
 
-        if(file_exists($path||$path_one||$path_two)){
-            File::delete( $path, $path_one, $path_two);
+        if(file_exists($path)){
+            File::delete($path);
+        }
+
+        if(file_exists($path_one)){
+            File::delete($path_one);
         }
 
         if ($news_National_id === $NationalNews)

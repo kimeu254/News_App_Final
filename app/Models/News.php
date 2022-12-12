@@ -25,8 +25,7 @@ class News extends Model
         'image_one',
         'path_one',
         'story_one',
-        'image_two',
-        'path_two',
+        'url',
         'story_two',
     ];
 }

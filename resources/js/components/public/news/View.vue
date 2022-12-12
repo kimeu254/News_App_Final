@@ -37,7 +37,7 @@
                         <img :src="'/storage/posts/' + story.image_two" class="img-fluid w-100" style="height: 350px;">
                     </div>
                 </div>
-                <div class="py-3" v-if="(story.story_one != null)">
+                <div class="py-3" v-if="(story.story_two != null)">
                     <p class="h6" style="white-space: pre-wrap;">{{story.story_two}}</p>
                 </div>
                 <div class="py-3">
