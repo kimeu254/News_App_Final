@@ -1,18 +1,24 @@
 <template>
     <div class="container">
-        <h1>{{news.headline}}</h1>
-        <div>
-            <img :src="'/storage/posts/' + news.image" class="img-fluid w-50" style="height: 300px; object-fit: cover;">
+        <h1 style="font-weight: bolder;">{{news.headline}}</h1>
+        <div class="py-3">
+            <img :src="'/storage/posts/' + news.image" class="img-fluid w-100" style=" object-fit: cover;">
         </div>
-        <p style="white-space:pre-wrap;">{{news.story}}</p>
-        <div v-if="(news.image_one != null)">
-            <img :src="'/storage/posts/' + news.image_one" class="img-fluid w-50" style="height: 300px; object-fit: cover;">
+        <div class="py-3">
+            <p style="white-space:pre-wrap;">{{news.story}}</p>
+        </div>     
+        <div class="py-3" v-if="(news.image_one != null)">
+            <img :src="'/storage/posts/' + news.image_one" class="img-fluid w-100" style="object-fit: cover;">
         </div>
         <p style="white-space:pre-wrap;">{{news.story_one}}</p>
-        <div v-if="(news.image_two != null)">
-            <img :src="'/storage/posts/' + news.image_two" class="img-fluid w-50" style="height: 300px; object-fit: cover;">
+        <div class="py-3" v-if="(news.url != null)">
+            <div class="embed-responsive ratio ratio-16x9">
+                <iframe :src="'https://www.youtube.com/embed/'+news.url" frameborder="0"></iframe>
+            </div>        
         </div>
-        <p style="white-space:pre-wrap;">{{news.story_two}}</p>
+        <div class="py-3">
+            <p style="white-space:pre-wrap;">{{news.story_two}}</p>
+        </div>
     </div>
 </template>
 

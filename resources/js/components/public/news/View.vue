@@ -26,15 +26,15 @@
                 </div>
                 <div class="py-3" v-if="(story.image_one != null)">
                     <div class="con">
-                        <img :src="'/storage/posts/' + story.image_one" class="img-fluid w-100" style="height: 350px;">
+                        <img :src="'/storage/posts/' + story.image_one" class="img-fluid w-100" style="height: 500px;">
                     </div>
                 </div>
                 <div class="py-3" v-if="(story.story_one != null)">
                     <p class="h6" style="white-space: pre-wrap;">{{story.story_one}}</p>
                 </div>
-                <div class="py-3" v-if="(story.image_two != null)">
-                    <div class="con">
-                        <img :src="'/storage/posts/' + story.image_two" class="img-fluid w-100" style="height: 350px;">
+                <div class="py-3" v-if="(story.url != null)">
+                    <div class="embed-responsive ratio ratio-16x9">
+                        <iframe :src="'https://www.youtube.com/embed/'+story.url" frameborder="0"></iframe>
                     </div>
                 </div>
                 <div class="py-3" v-if="(story.story_two != null)">

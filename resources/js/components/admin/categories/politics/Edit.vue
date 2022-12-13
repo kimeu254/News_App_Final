@@ -16,17 +16,46 @@
                                 <input type="file" class="form-control" v-on:change="onChange">
                             </div>
                             <div id="preview">
-                                <img v-if="url" :src="url" />
-                                <img v-else :src="'/storage/posts/' + news.image">
+                                <img v-if="url_one" :src="url_one" />
+                                <div v-else>
+                                    <div v-if="(news.image_one != null)" class="row g-1">
+                                        <div class="col-sm-6">
+                                            <figure class="figure">
+                                                <img :src="'/storage/posts/' + news.image" class="figure-img img-fluid" alt="...">
+                                                <figcaption class="figure-caption">Image One</figcaption>
+                                            </figure>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <figure class="figure">
+                                                <img :src="'/storage/posts/' + news.image_one" class="figure-img img-fluid" alt="...">
+                                                <figcaption class="figure-caption">Image Two</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div v-else class="row">
+                                        <div class="col-sm-12">
+                                            <figure class="figure">
+                                                <img :src="'/storage/posts/' + news.image" class="figure-img img-fluid" alt="...">
+                                                <figcaption class="figure-caption">Image One</figcaption>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            
                             <div class="mb-4">
+                                <h5>Part 1</h5>
                                 <textarea v-model="news.story" class="form-control" placeholder="Type your story here..." style="height: 100px"></textarea>
                             </div>
                             <div class="mb-4" v-if="(news.story_one != null)">
+                                <h5>Part 2</h5>
                                 <textarea v-model="news.story_one" class="form-control" placeholder="Type your story here..." style="height: 100px"></textarea>
                             </div>
                             <div class="mb-4" v-if="(news.story_two != null)">
+                                <h5>Part 3</h5>
+                                <input type="text" v-model="news.url" class="form-control mb-5" placeholder="YouTube URL">
+                                <div class="embed-responsive ratio ratio-16x9 mb-5">
+                                    <iframe :src="'https://www.youtube.com/embed/'+news.url" frameborder="0"></iframe>
+                                </div> 
                                 <textarea v-model="news.story_two" class="form-control" placeholder="Type your story here..." style="height: 100px"></textarea>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -47,7 +76,7 @@ export default {
     data() {
         return{
             success: '',
-            url: '',
+            url_one: '',
         }
     },
     computed: {
@@ -59,7 +88,7 @@ export default {
         onChange(e) {
             this.file = e.target.files[0];
             console.log(e.target.files[0]);
-            this.url = URL.createObjectURL(this.file);
+            this.url_one = URL.createObjectURL(this.file);
             
         },
 
@@ -72,6 +101,9 @@ export default {
                 formData.append('story', this.news.story)
                 if (this.news.story_one != null) {
                     formData.append('story_one', this.news.story_one)
+                }
+                if (this.news.url != null) {
+                    formData.append('url', this.news.url)
                 }
                 if (this.news.story_two != null) {
                     formData.append('story_two', this.news.story_two)
