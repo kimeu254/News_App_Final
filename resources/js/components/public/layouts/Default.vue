@@ -111,7 +111,7 @@
           <div class="text-center">
             <img
                   class="img-fluid me-3"
-                  src="../../../../../public/img/Dark Blue Red White Generic News General News Logo (2)cropped1.png"
+                  :src="'/storage/logos/Dark Blue Red White Generic News General News Logo (2)cropped1.png'"
                   alt=""
             />
             <div class="pt-3">
