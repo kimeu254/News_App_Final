@@ -5,7 +5,7 @@
           <div class="container-fluid">
               <div class="d-flex justify-content-between">
                   <div class="brand m-3">
-                    <img class="img-fluid" src="../../../../../public/img/Dark Blue Red White Generic News General News Logo (2)cropped1.png" alt="" height="100">
+                    <img class="img-fluid" :src="'/storage/logos/Dark Blue Red White Generic News General News Logo (2)cropped1.png'" alt="" height="100">
                   </div>
                   <div class="m-5">
                     <h3>Daily News</h3>
@@ -16,7 +16,7 @@
         </header>
         <nav class="navbar navbar-expand-lg navbar-dark shadow" id="navbar">
           <div class="container-fluid">
-            <img class="navbar-brand d-lg-none img-fluid" src="../../../../../public/img/Dark Blue Red White Generic News General News Logo (4)cropped1.png" width="200">
+            <img class="navbar-brand d-lg-none img-fluid" :src="'/storage/logos/Dark Blue Red White Generic News General News Logo (4)cropped1.png'" width="200">
             <div class="d-lg-none input-group-sm ms-auto px-3">
                 <button type="submit" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   <i class="bi bi-search"></i>
